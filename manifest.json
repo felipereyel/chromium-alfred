@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Chromium Alfred",
+  "version": "1.0.0",
+  "description": "Alfred Helping you find your shows",
+  "short_name": "Chromium Alfred",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/index.js"]
+    }
+  ]
+ }
