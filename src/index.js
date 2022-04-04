@@ -2,10 +2,10 @@ const WRAPPER_KEY = "sp-wrap";
 const PSA_PARTIAL_URL = "psa";
 
 function parseFilename(filename) {
-  const [key] = filename.match(/S\d{2}E\d{2}/g);
+  const [key] = filename.match(/S\d{2}E\d{2}/g) || [];
   const [joinedShowName] = filename.split(key);
   const showName = joinedShowName.slice(0, -1).split(".").join(" ");
-  const [quality] = filename.match(/720p|1080p|2160p/g);
+  const [quality] = filename.match(/720p|1080p|2160p/g) || [];
   return { key, showName, quality };
 }
 
