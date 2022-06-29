@@ -1,5 +1,6 @@
 const WRAPPER_KEY = "sp-wrap";
 const PSA_PARTIAL_URL = "psa";
+const BASE_URL = "https://torlock2.com";
 
 function parseFilename(filename) {
   const [key] = filename.match(/S\d{2}E\d{2}/g) || [];
@@ -20,37 +21,47 @@ async function search(query) {
 async function fetchTorrent(event) {
   const query = event.target.getAttribute("query");
   const body = event.target.parentNode.children[1];
-  const { url, hash, source } = await search(query);
 
-  if (source) {
-    const p = document.createElement("p");
-    body.appendChild(p);
+  const p = document.createElement("p");
+  body.appendChild(p);
 
-    const a = document.createElement("a");
-    a.style.fontSize = "16px";
-    a.href = source;
-    a.textContent = source;
-    body.appendChild(a);
-  }
+  const a = document.createElement("a");
+  a.style.fontSize = "16px";
+  a.href = BASE_URL + "?q=" + query.replace(/ /g, "+");
+  a.textContent = "Find in Torklock";
+  body.appendChild(a);
 
-  if (url) {
-    const p = document.createElement("p");
-    body.appendChild(p);
+  // const { url, hash, source } = await search(query);
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.textContent = "Torlock torrent";
-    body.appendChild(a);
-  }
+  // if (source) {
+  //   const p = document.createElement("p");
+  //   body.appendChild(p);
 
-  if (hash) {
-    const p = document.createElement("p");
-    body.appendChild(p);
+  //   const a = document.createElement("a");
+  //   a.style.fontSize = "16px";
+  //   a.href = source;
+  //   a.textContent = source;
+  //   body.appendChild(a);
+  // }
 
-    const span = document.createElement("span");
-    span.textContent = `INFO HASH: (${hash})`;
-    body.appendChild(span);
-  }
+  // if (url) {
+  //   const p = document.createElement("p");
+  //   body.appendChild(p);
+
+  //   const a = document.createElement("a");
+  //   a.href = url;
+  //   a.textContent = "Torlock torrent";
+  //   body.appendChild(a);
+  // }
+
+  // if (hash) {
+  //   const p = document.createElement("p");
+  //   body.appendChild(p);
+
+  //   const span = document.createElement("span");
+  //   span.textContent = `INFO HASH: (${hash})`;
+  //   body.appendChild(span);
+  // }
 }
 
 async function main() {
