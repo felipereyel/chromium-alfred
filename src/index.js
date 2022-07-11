@@ -1,6 +1,6 @@
 const WRAPPER_KEY = "sp-wrap";
 const PSA_PARTIAL_URL = "psa";
-const BASE_URL = "https://torlock2.com";
+const BASE_URL = "https://kickass.onl/usearch/";
 
 function parseFilename(filename) {
   const [key] = filename.match(/S\d{2}E\d{2}/g) || [];
@@ -27,8 +27,8 @@ async function fetchTorrent(event) {
 
   const a = document.createElement("a");
   a.style.fontSize = "16px";
-  a.href = BASE_URL + "?q=" + query.replace(/ /g, "+");
-  a.textContent = "Find in Torklock";
+  a.href = BASE_URL + query.replace(/ /g, "+");
+  a.textContent = "Find torrent";
   body.appendChild(a);
 
   // const { url, hash, source } = await search(query);
